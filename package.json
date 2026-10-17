@@ -1,0 +1,8 @@
+{
+  "name": "ludo-royale",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static HTML5 Ludo game (Three.js + Canvas 2D). Host the folder as-is.",
+  "scripts": { "test": "node tests/run-tests.js" }
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#071a1f">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ludo Royale">
+<meta name="description" content="Ludo Royale: a 3D Ludo game with coins to win. Works offline.">
+<title>Ludo Royale</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="gl" aria-label="Ludo board"></canvas>
+  <canvas id="fx" aria-hidden="true"></canvas>
+</div>
+
+<!-- In-game HUD -->
+<div id="hud" class="hud" hidden>
+  <div id="hud-head" class="hud-head">
+    <div class="hud-top">
+      <button id="btn-menu" class="icon-btn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="prize" title="Prize for the winner"><span>Prize</span><b id="prize">0</b></div>
+      <div class="wallet-pill"><i class="coin"></i><b id="coins-hud">0</b></div>
+    </div>
+    <ul id="seats" class="seats" aria-label="Players"></ul>
+  </div>
+  <div id="hud-bottom" class="hud-bottom">
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <button id="btn-roll" class="primary roll" disabled>Roll dice</button>
+  </div>
+</div>
+
+<!-- Lobby -->
+<section id="lobby" class="lobby" hidden aria-label="Choose a table">
+  <div id="lobby-top" class="lobby-top">
+    <h1 class="brand">Ludo Royale</h1>
+    <div class="lobby-actions">
+      <button id="btn-stats" class="icon-btn" aria-label="Coins and statistics">
+        <svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+      </button>
+      <button id="btn-sound-lobby" class="icon-btn" aria-label="Sound"></button>
+      <button id="btn-fs-lobby" class="icon-btn" aria-label="Full screen">
+        <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="lobby-sheet" class="lobby-sheet">
+    <div class="wallet-row">
+      <i class="coin big"></i><b id="coins-lobby">0</b><span class="wallet-sub">coins</span>
+      <button id="btn-daily" class="gift" hidden>Free 250 coins</button>
+    </div>
+    <button id="btn-resume" class="resume" hidden>Resume your match in progress</button>
+    <div id="tables" class="tables" role="radiogroup" aria-label="Table"></div>
+    <div class="options">
+      <div>
+        <p class="opt-label">Opponents</p>
+        <div id="seg-opp" class="seg" role="radiogroup" aria-label="Opponents">
+          <button role="radio" data-v="1">1</button><button role="radio" data-v="2">2</button><button role="radio" data-v="3">3</button>
+        </div>
+      </div>
+      <div>
+        <p class="opt-label">Computer skill</p>
+        <div id="seg-skill" class="seg" role="radiogroup" aria-label="Computer skill">
+          <button role="radio" data-v="casual">Casual</button><button role="radio" data-v="sharp">Sharp</button>
+        </div>
+      </div>
+    </div>
+    <button id="btn-play" class="primary wide">Play</button>
+    <p class="note">The winner takes the whole pot. Captures and pawns home earn bonus coins. Coins are virtual and cannot be cashed out.</p>
+  </div>
+</section>
+
+<div id="modal-root" class="modal-root"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="fps" class="fps" hidden></div>
+
+<div id="loading" class="loading">
+  <div class="loading-inner">
+    <h1 class="brand">Ludo Royale</h1>
+    <div class="bar"><i id="load-bar"></i></div>
+    <p id="load-label" class="load-label">Starting</p>
+    <div id="load-error" class="load-error" hidden></div>
+  </div>
+</div>
+
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;color:#f7f0de;background:#071a1f;margin:0;padding:24px;text-align:center">Ludo Royale needs JavaScript turned on.</p></noscript>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
